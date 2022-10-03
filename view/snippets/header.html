@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <?= G_SITENAME ?>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="view/img/favicon.ico">
+
+    <!-- hCaptcha -->
+    <script src='https://www.hCaptcha.com/1/api.js' async defer></script>
+
+    <!-- Fontawsome -->
+    <script src="https://kit.fontawesome.com/50a5224e09.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="view/js/jquery-3.6.0.min.js"></script>
+    <script src="view/js/bootstrap/bootstrap.bundle.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="view/scss/style.css">
+
+    <!-- Custom Script -->
+    <script src="view/js/script.js"></script>
+
+    <!-- Cookie Banner -->
+    <script id="cookiebanner" src="https://cdn.jsdelivr.net/gh/dobarkod/cookie-banner@1.2.2/dist/cookiebanner.min.js" data-bg="#4B8DFA" data-moreinfo-target="_self" data-moreinfo="view/legal/privacy-policy.php" data-linkmsg="privacy policy!" data-position="bottom"
+        data-message="Hey, we use cookies. We only use technically necessary cookies and no tracker cookies.
+    If you have any further questions, please read our " height="50px">
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <div class="container">
+                <?php if (isset($_SESSION['admin'])) { ?>
+                <?php if ($_SESSION['admin'] === true) { ?>
+                <a class="navbar-brand" href="index.php?a=admin">
+                    <img src="view/img/logo.png" alt="Logo" width="35px" height="35px" class="d-inline-block align-text-top">
+                    <?= G_SITENAME ?> <sub>Alpha 1.3</sub>
+                </a>
+                <?php }
+                } else { ?>
+                <a class="navbar-brand" href="index.php">
+                    <img src="view/img/logo.png" alt="Logo" width="35px" height="35px" class="d-inline-block align-text-top">
+                    <?= G_SITENAME ?> <sub>Alpha 1.3</sub>
+                </a>
+                <?php } ?>
+                <a href="index.php?a=create"><button type="button" class="btn btn-dark"><i class="fa-solid fa-pen"></i>&nbsp;New Feedback</button></a>
+            </div>
+            <?php if (isset($_SESSION['admin'])) { ?>
+            <?php if ($_SESSION['admin'] === true) { ?>
+            <a href="index.php?a=account"><button type="button" class="btn btn-dark"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Logout</button></a>
+            <?php }
+            } ?>
+        </nav>
+    </header>

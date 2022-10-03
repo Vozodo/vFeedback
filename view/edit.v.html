@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Edit Feedback</h1>
+    <?php if ($success === false) { ?>
+    <?php if (($success === false) && ($_POST)) { ?>
+    <div class="alert alert-danger" role="alert">
+        <h4>Error</h4>
+        <?= $error ?><br /> For more information contact the website owner<br />
+    </div>
+    <?php } ?>
+    <form action="index.php?a=edit&id=<?=$_GET['id']?>" method="POST">
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" id="name" value="<?=$feedback->getName()?>" placeholder="Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" id="title" value="<?=$feedback->getTitle()?>" placeholder="Feedback Title" required>
+        </div>
+        <div class="mb-3">
+            <label for="feedback">Feedback</label>
+            <textarea name="feedback" class="form-control" placeholder="Feedback" maxlength="255" rows="3" id="feedback" required><?=$feedback->getFeedback()?></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <?php } elseif (($success === true) && ($_POST)) { ?>
+    <div class="alert alert-success" role="alert">
+        <h4>Done!</h4>
+        <p>The feedback has been edited and will be immediately displayed on the homepage!</p>
+        <p><a href="index.php?a=admin">Go to Admin Page</a></p>
+    </div>
+    <?php } ?>
+</div>

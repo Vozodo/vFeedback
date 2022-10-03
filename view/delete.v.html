@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Delete Feedback</h1>
+    <?php if($success === false) { ?>
+    <div class="alert alert-danger" role="alert">
+        <form action="index.php?a=delete&id=<?= $_GET['id'] ?>" method="POST">
+            <h5><b>Warning,</b> you are deleting a feedback with the following content:</h5>
+            <p><?= $feedback ?></p>
+            <hr />
+            <h5>You really want to delete?</h5>
+            <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+            <button type="submit" class="btn btn-danger btn-lg btn-block">Delete</button>
+        </form>
+    </div>
+    <?php } ?>
+    <?php if($success === true) { ?>
+        <div class="alert alert-success" role="alert">
+        <h4>Done!</h4>
+        <p>The feedback was successfully deleted</p>
+        <p><a href="index.php?a=admin">Go to Admin Page</a></p>
+        </div>
+    <?php } ?>
+</div>

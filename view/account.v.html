@@ -1,0 +1,28 @@
+<?php if ($logedin === false) { ?>
+    <div class="container">
+        <h1>Admin Login</h1>
+        <form method="POST" action="index.php?a=account">
+
+            <div class="mb-3">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <p><?= $error ?></p>
+            <button type="submit" class="btn btn-primary">Login</button>
+
+    </div>
+    </form>
+
+    </div>
+<?php } ?>
+<?php if ($logedin === true) { ?>
+    <div class="container">
+        <h1>Logged Out</h1>
+        <p>You have successfully logged out</p>
+        <p><a href="index.php">Go to Homepage</a></p>
+    </div>
+<?php } ?>

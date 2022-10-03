@@ -1,0 +1,29 @@
+
+<?php if ($logedin === true) { ?>
+    <div class="container">
+    <div class="row">
+        <?php foreach ($feedbacks as $feedback) { ?>
+            <div class="col-lg-3 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div id="float-left"><?= htmlspecialchars($feedback->getName()) ?></div>
+                        <div id="float-right"><img src="view/img/flag/<?= $feedback->getCountry() ?>.svg" width="20px"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($feedback->getTitle()) ?></h5>
+                        <p class="card-text"><?= htmlspecialchars($feedback->getFeedback()) ?></p>
+                    </div>
+                    <div class="card-footer text-muted">
+                            <?=Functions::timeago($feedback->getDate())?>
+                            <div id="float-right">
+                                <a href="index.php?a=edit&id=<?=$feedback->getId()?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="index.php?a=delete&id=<?=$feedback->getId()?>"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+<?php } ?>

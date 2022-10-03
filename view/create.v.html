@@ -1,0 +1,63 @@
+<!--
+Pseudo template
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>New Feedback</h1>
+        <?php if ((!$_POST) || ($success === false)) { ?>
+            <?php if (($success === false) && ($_POST)) { ?>
+                <div class="alert alert-danger" role="alert">
+                    <h4>Error</h4>
+                    <?= $error ?><br />
+                    For more information contact the website owner<br />
+                </div>
+            <?php } ?>
+
+            <form action="index.php?a=create" method="POST">
+
+                <div class="mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Feedback title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="feedback">Youre Feedback</label>
+                    <textarea name="feedback" class="form-control" placeholder="Your feedback" maxlength="255" rows="3" id="feedback" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="captcha">Captcha</label>
+                    <div class="h-captcha" data-sitekey="<?= HC_SITEKEY ?>" id="captcha"></div>
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" class="form-check-input" id="accept" name="accept" value="accept" required>
+                    <label class="form-check-label" for="accept">Yes, <?= $_SERVER['SERVER_NAME'] ?> is allowed to process the personal data I have provided.</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        <?php } elseif (($success === true) && ($_POST)) { ?>
+            <div class="alert alert-success" role="alert">
+                <h4>Thank you!</h4>
+                Your feedback has been added and will be immediately displayed on the home page!<br />
+                <a href="index.php">Go to Home Page</a>
+            </div>
+        <?php } ?>
+    </div>
+
+</body>
+
+</html>
